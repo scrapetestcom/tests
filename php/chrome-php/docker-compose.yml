@@ -1,0 +1,17 @@
+services:
+  php-chrome-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+    command: ["--url=${URL}", "--file-prefix=${FILE_PREFIX}", "--ws-browser=${WS_BROWSER}", "--proxy-ip=${PROXY_IP}"]
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP
+    shm_size: 2gb

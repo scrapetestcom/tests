@@ -1,0 +1,15 @@
+services:
+  ruby-capybara:
+    image: "ruby:3.3"
+    user: root
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+    command: sh -c "bundle install --quiet && ruby script.rb --url=\"${URL}\" --file-prefix=\"${FILE_PREFIX}\" --ws-browser=\"${WS_BROWSER}\" --proxy-ip=\"${PROXY_IP}\""
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP

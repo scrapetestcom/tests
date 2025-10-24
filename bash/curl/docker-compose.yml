@@ -1,0 +1,19 @@
+services:
+  bash-curl:
+    build: .
+    user: root
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+    entrypoint: ["/bin/bash", "scrape.sh"]
+    command:
+      - --url=${URL}
+      - --file-prefix=${FILE_PREFIX:-capture}
+      - --proxy-ip=${PROXY_IP}
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP

@@ -1,0 +1,19 @@
+services:
+  golang-rod:
+    image: "golang:1.24.7-alpine"
+    user: root
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+      - go-modules:/go/pkg/mod  # Cache for modules
+    command: sh -c "go run script.go --url=\"${URL}\" --file-prefix=\"${FILE_PREFIX}\" --ws-browser=\"${WS_BROWSER}\" --proxy-ip=\"${PROXY_IP}\""
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP
+
+volumes:
+  go-modules:

@@ -1,0 +1,19 @@
+services:
+  javascript-puppeteer:
+    image: ghcr.io/puppeteer/puppeteer:latest
+    init: true  # Manages Puppeteer processes
+    cap_add:
+      - SYS_ADMIN  # Required for Chrome sandbox
+    working_dir: /home/pptruser/app
+    user: root
+    volumes:
+      - ${PWD}/main.js:/home/pptruser/app/main.js
+      - ${OUTPUT_DIR:-${PWD}/output}:/home/pptruser/app/output
+    command: sh -c "node main.js --url=\"${URL}\" --file-prefix=\"${FILE_PREFIX}\" --ws-browser=\"${WS_BROWSER}\" --proxy-ip=\"${PROXY_IP}\""
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP
+      - PUPPETEER_CACHE_DIR=/home/pptruser/.cache/puppeteer  # to be possible run in root user

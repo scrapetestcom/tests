@@ -1,0 +1,14 @@
+services:
+  python-camoufox:
+    build: .
+    user: root
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+    command: python main.py --url="${URL}" --file-prefix="${FILE_PREFIX}" --proxy-ip="${PROXY_IP}"
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - PROXY_IP
