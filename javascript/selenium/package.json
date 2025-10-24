@@ -1,0 +1,14 @@
+{
+  "name": "selenium",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Selenium automation scripts",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.36.0",
+    "chromedriver": "^141.0.0"
+  }
+}

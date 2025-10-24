@@ -1,0 +1,13 @@
+{
+  "name": "scrape-test/php-chrome-php",
+  "description": "Web scraping with Chrome PHP",
+  "require": {
+    "php": "^8.0",
+    "chrome-php/chrome": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}

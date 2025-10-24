@@ -1,0 +1,23 @@
+services:
+  golang-chromedp:
+    build: .
+    user: root
+    working_dir: /app
+    shm_size: 2gb
+    init: true
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+      - go-modules:/go/pkg/mod
+    command: >
+      go run script.go
+      --url=${URL}
+      --file-prefix=${FILE_PREFIX}
+      --proxy-ip=${PROXY_IP}
+    environment:
+      - URL
+      - FILE_PREFIX=capture
+      - PROXY_IP
+
+volumes:
+  go-modules:

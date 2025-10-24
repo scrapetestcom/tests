@@ -1,0 +1,13 @@
+{
+  "name": "puppeteer",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Puppeteer automation scripts",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.23.0"
+  }
+}

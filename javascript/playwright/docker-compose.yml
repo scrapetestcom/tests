@@ -1,0 +1,15 @@
+services:
+  javascript-playwright:
+    image: "mcr.microsoft.com/playwright:v1.56.0-noble"
+    user: root
+    working_dir: /app
+    volumes:
+      - ${PWD}:/app
+      - ${OUTPUT_DIR:-${PWD}/output}:/app/output
+    command: sh -c "npm install && node main.js --url=\"${URL}\" --file-prefix=\"${FILE_PREFIX}\" --ws-browser=\"${WS_BROWSER}\" --proxy-ip=\"${PROXY_IP}\""
+    environment:
+      - URL
+      - OUTPUT_DIR=./output
+      - FILE_PREFIX=capture
+      - WS_BROWSER
+      - PROXY_IP

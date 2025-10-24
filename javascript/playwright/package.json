@@ -1,0 +1,13 @@
+{
+  "name": "playwright-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Playwright automation scripts",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
