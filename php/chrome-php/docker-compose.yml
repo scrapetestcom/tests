@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
+    network_mode: ${NETWORK_NAME:-default}
     volumes:
       - ${PWD}:/app
       - ${OUTPUT_DIR:-${PWD}/output}:/app/output

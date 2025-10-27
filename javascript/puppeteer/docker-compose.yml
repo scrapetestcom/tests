@@ -5,6 +5,7 @@ services:
     cap_add:
       - SYS_ADMIN  # Required for Chrome sandbox
     working_dir: /home/pptruser/app
+    network_mode: ${NETWORK_NAME:-default}
     user: root
     volumes:
       - ${PWD}/main.js:/home/pptruser/app/main.js
