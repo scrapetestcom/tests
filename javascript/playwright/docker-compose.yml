@@ -3,6 +3,7 @@ services:
     image: "mcr.microsoft.com/playwright:v1.56.0-noble"
     user: root
     working_dir: /app
+    network_mode: ${NETWORK_NAME:-default}
     volumes:
       - ${PWD}:/app
       - ${OUTPUT_DIR:-${PWD}/output}:/app/output
